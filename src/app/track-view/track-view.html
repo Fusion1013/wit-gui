@@ -1,0 +1,50 @@
+<input
+  type="text"
+  placeholder="Search tracks..."
+  [(ngModel)]="searchTerm"
+  (input)="applyFilter()"
+/>
+<span>({{filteredTracks.length}})</span>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>YouTube</th>
+      <th>Length (ms)</th>
+      <th>Tags</th>
+      <th style="width: 250px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input #titleInput [(ngModel)]="newTrack.title" placeholder="Title" />
+      </td>
+
+      <td>
+        <input [(ngModel)]="newTrack.artist" placeholder="Artist" />
+      </td>
+
+      <td>
+        <input [(ngModel)]="newTrack.youtube.link" placeholder="YouTube link" />
+      </td>
+
+      <td>
+        <input [(ngModel)]="newTrack.youtube.lengthMilliseconds" placeholder="Length" type="number" />
+      </td>
+
+      <td>
+        <input [(ngModel)]="tagsInput" placeholder="Tags (comma separated)" />
+      </td>
+
+      <td>
+        <button (click)="addTrack()">Add</button>
+      </td>
+    </tr>
+    @for (track of filteredTracks; track track.id) {
+      <wit-track-row [track]="track" (trackUpdatedEvent)="loadTracks()"></wit-track-row>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,78 @@
+/* Layout */
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Main area */
+.main {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: #1a202c;
+  color: #edf2f7;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Section headers */
+.sidebar h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Cards inside sidebar */
+.card {
+  background: #2d3748;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Users list */
+.user {
+  padding: 4px 0;
+  border-bottom: 1px solid #4a5568;
+}
+
+.user:last-child {
+  border-bottom: none;
+}
+
+/* Tabs (reuse + slight tweak) */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4a5568;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button.active {
+  color: #3182ce;
+  border-bottom: 2px solid #3182ce;
+  font-weight: 600;
+}
+
+/* Content */
+.tab-content {
+  padding-top: 10px;
+}

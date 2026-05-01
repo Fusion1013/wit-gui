@@ -1,0 +1,56 @@
+:host {
+    display: contents;
+}
+
+/* Rows */
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+/* Inputs inside table (edit mode) */
+td input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+td input:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+}
+
+/* Buttons */
+button {
+  padding: 6px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Primary action */
+button:first-of-type {
+  background-color: #3182ce;
+  color: white;
+}
+
+button:first-of-type:hover {
+  background-color: #2b6cb0;
+}
+
+/* Secondary (cancel/edit fallback) */
+button {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+button:hover {
+  background-color: #cbd5e0;
+}

@@ -1,0 +1,11 @@
+export * from './audioController.service';
+import { AudioControllerService } from './audioController.service';
+export * from './discordInfoController.service';
+import { DiscordInfoControllerService } from './discordInfoController.service';
+export * from './helloWorldController.service';
+import { HelloWorldControllerService } from './helloWorldController.service';
+export * from './sceneController.service';
+import { SceneControllerService } from './sceneController.service';
+export * from './trackController.service';
+import { TrackControllerService } from './trackController.service';
+export const APIS = [AudioControllerService, DiscordInfoControllerService, HelloWorldControllerService, SceneControllerService, TrackControllerService];
