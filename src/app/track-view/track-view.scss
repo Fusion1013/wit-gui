@@ -104,3 +104,12 @@ span {
   border-radius: 12px;
   font-size: 12px;
 }
+
+.search-field {
+  display: flex;
+  margin: 8px 0;
+
+  input {
+    margin-right: 2px;
+  }
+}

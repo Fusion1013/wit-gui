@@ -16,6 +16,12 @@
         (click)="setTab('scenes')">
         Scenes
       </button>
+
+      <button
+        [class.active]="activeTab === 'campaigns'"
+        (click)="setTab('campaigns')">
+        Campaigns
+      </button>
     </div>
 
     <!-- Tab content -->
@@ -27,34 +33,15 @@
       @if (activeTab === 'scenes') {
         <wit-scene-view />
       }
+
+      @if (activeTab === 'campaigns') {
+        <wit-campaign-view />
+      }
     </div>
 
   </div>
 
   <!-- SIDEBAR -->
-  <div class="sidebar">
-
-    <h3>Now Playing</h3>
-    <div class="card">
-      <p><strong>{{ discordInfo.currentlyPlaying || 'Nothing playing' }}</strong></p>
-    </div>
-
-    <h3>Voice Channel</h3>
-    <div class="card">
-      <p>{{ discordInfo.joinedAudioChannel || 'Not connected' }}</p>
-    </div>
-
-    <h3>Users</h3>
-    <div class="card">
-      @if (discordInfo.joinedUsers?.length === 0) {
-        <p>No users</p>
-      } @else {
-        @for (user of discordInfo.joinedUsers; track $index) {
-          <p>{{user}}</p>
-        }
-      }
-    </div>
-
-  </div>
+   <wit-sidebar></wit-sidebar>
 
 </div>

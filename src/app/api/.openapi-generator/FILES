@@ -13,6 +13,8 @@ encoder.ts
 git_push.sh
 index.ts
 model/discordStatusDTO.ts
+model/discordVoiceChannelDto.ts
+model/discordVoiceStatusDTO.ts
 model/models.ts
 model/sceneEntity.ts
 model/trackEntity.ts

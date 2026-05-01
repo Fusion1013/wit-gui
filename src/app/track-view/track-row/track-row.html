@@ -32,7 +32,7 @@
         @if (editingTrack) {
             <input type="number" [(ngModel)]="editBuffer.youtube.lengthMilliseconds" (keyup.enter)="saveEdit()" />
         } @else {
-            {{ lengthMilliseconds }}
+            {{ lengthMilliseconds }}ms
         }
     </td>
 

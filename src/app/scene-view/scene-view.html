@@ -1,10 +1,12 @@
-<input
-  type="text"
-  placeholder="Search scenes..."
-  [(ngModel)]="searchTerm"
-  (input)="applyFilter()"
-/>
-<span>({{filteredScenes.length}})</span>
+<div class="search-field">
+  <input
+    type="text"
+    placeholder="Search scenes..."
+    [(ngModel)]="searchTerm"
+    (input)="applyFilter()"
+  />
+  <span>({{filteredScenes.length}})</span>
+</div>
 
 <table>
   <thead>
@@ -22,17 +24,17 @@
       </td>
 
         <td>
-        <input
-            [(ngModel)]="introTrackInput"
-            [attr.list]="'track-options'"
-            placeholder="Intro Track Title"
-        >
+          <input
+              [(ngModel)]="introTrackInput"
+              [attr.list]="'track-options'"
+              placeholder="Intro Track Title"
+          >
 
-        <datalist id="track-options">
-            @for (track of tracks; track track.id) {
-            <option [value]="track.title"></option>
-            }
-        </datalist>
+          <datalist id="track-options">
+              @for (track of tracks; track track.id) {
+              <option [value]="track.title"></option>
+              }
+          </datalist>
         </td>
 
       <td>
@@ -44,73 +46,7 @@
       </td>
     </tr>
     @for (scene of filteredScenes; track scene.id) {
-      <tr class="scene-row" (click)="toggleSceneMoreInfo(scene.id)">
-
-        <!-- TITLE -->
-        <td>
-          @if (editingSceneId === scene.id) {
-            <input [(ngModel)]="editBuffer.title" />
-          } @else {
-            {{ scene.title }}
-          }
-        </td>
-
-        <!-- INTRO TRACK-->
-        <td>
-            @if (editingSceneId === scene.id) {
-                <input [(ngModel)]="editBuffer.introTrack">
-            } @else {
-                {{ scene.introTrack?.title }}
-            }
-        </td>
-
-        <!-- TAGS -->
-        <td>
-          @if (editingSceneId === scene.id) {
-            <input [(ngModel)]="editBuffer.tags" placeholder="comma separated" />
-          } @else {
-            {{ scene.moodTags.join(', ') }}
-          }
-        </td>
-
-        <!-- ACTIONS -->
-        <td>
-          @if (editingSceneId === scene.id) {
-            <button (click)="saveEdit()">Save</button>
-            <button (click)="cancelEdit()">Cancel</button>
-          } @else {
-            <button (click)="startEdit(scene)">Edit</button>
-            <button (click)="playScene(scene.id)">Play</button>
-            <button (click)="deleteScene(scene.id)">Delete</button>
-          }
-        </td>
-
-      </tr>
-
-      @if (expandedSceneId === scene.id) {
-        <tr class="expanded-row">
-          <td colspan="4">
-
-            <div class="expanded-content">
-
-              <h4>Matching Tracks</h4>
-
-              @for (track of getTracksForScene(scene); track track.id) {
-                <div class="track-item">
-                  <strong>{{ track.title }}</strong>
-                  <span>{{ track.artist }}</span>
-                </div>
-              }
-
-              @if (getTracksForScene(scene).length === 0) {
-                <p class="empty">No matching tracks</p>
-              }
-
-            </div>
-
-          </td>
-        </tr>
-      }
+      <wit-scene-row (changeEvent)="loadScenes()" [scene]="scene"></wit-scene-row>
     }
   </tbody>
 </table>

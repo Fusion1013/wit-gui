@@ -52,5 +52,9 @@ button {
 }
 
 button:hover {
-  background-color: #cbd5e0;
+  background-color: #52ba2d;
+}
+
+button:last-of-type:hover {
+  background-color: #c42727;
 }

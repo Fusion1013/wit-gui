@@ -1,42 +1,24 @@
-import { ChangeDetectorRef, Component, inject, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, signal } from '@angular/core';
 import { TrackView } from "./track-view/track-view";
 import { SceneView } from './scene-view/scene-view';
-import { DiscordInfoControllerService, DiscordStatusDTO } from './api';
-import { interval, switchMap } from 'rxjs';
+import { DiscordStatusDTO } from './api';
+import { CampaignView } from "./campaign-view/campaign-view";
+import { Sidebar } from "./components/sidebar/sidebar";
 
 @Component({
   selector: 'app-root',
-  imports: [TrackView, SceneView],
+  imports: [TrackView, SceneView, CampaignView, Sidebar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
+export class App {
   protected readonly title = signal('wit-gui');
-
-  private discordService = inject(DiscordInfoControllerService);
-  private cd = inject(ChangeDetectorRef);
 
   discordInfo: DiscordStatusDTO = {};
 
-  activeTab: 'tracks' | 'scenes' = 'tracks';
+  activeTab: 'tracks' | 'scenes' | 'campaigns' = 'tracks';
 
-  ngOnInit(): void {
-    this.update();
-  }
-
-  private update() {
-    interval(3000)
-      .pipe(
-        switchMap(() => this.discordService.getInfo())
-      )
-      .subscribe(data => {
-        this.discordInfo = data;
-        this.cd.detectChanges();
-      });
-  }
-
-  setTab(tab: 'tracks' | 'scenes') {
+  setTab(tab: 'tracks' | 'scenes' | 'campaigns') {
     this.activeTab = tab;
   }
 }

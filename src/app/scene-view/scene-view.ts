@@ -2,10 +2,11 @@ import { CommonModule } from "@angular/common";
 import { ChangeDetectorRef, Component, inject, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { AudioControllerService, SceneControllerService, TrackControllerService } from "../api";
+import { SceneRow } from "./scene-row/scene-row";
 
 @Component({
     selector: 'wit-scene-view',
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, SceneRow],
     templateUrl: './scene-view.html',
     styleUrl: './scene-view.scss',
 })
@@ -25,15 +26,8 @@ export class SceneView implements OnInit {
         moodTags: []
     };
 
-    editingSceneId: number = -1;
-
-    editBuffer: any = {};
-
-    expandedSceneId: number | null = null;
-
     private sceneService = inject(SceneControllerService);
     private trackService = inject(TrackControllerService);
-    private audioService = inject(AudioControllerService);
     private cd = inject(ChangeDetectorRef);
 
     ngOnInit(): void {
@@ -41,7 +35,7 @@ export class SceneView implements OnInit {
         this.loadTracks();
     }
 
-    private loadScenes(): void {
+    loadScenes(): void {
         this.sceneService.getAllScenes().subscribe(data => {
             this.scenes = data;
             this.filteredScenes = data;
@@ -67,11 +61,6 @@ export class SceneView implements OnInit {
                 )
             );
         });
-    }
-
-    playScene(id: number) {
-        console.log('Play scene ' + id);
-        this.audioService.playScene(id).subscribe();
     }
 
     addScene() {
@@ -107,45 +96,5 @@ export class SceneView implements OnInit {
 
             this.loadScenes();
         })
-    }
-
-    startEdit(scene: any) {
-
-    }
-
-    saveEdit() {
-
-    }
-
-    cancelEdit() {
-        this.editingSceneId = -1;
-        this.editBuffer = {};
-    }
-
-    deleteScene(id: number) {
-        this.sceneService.deleteScene(id).subscribe(() => {
-            this.loadScenes();
-        });
-    }
-
-    toggleSceneMoreInfo(sceneId: number) {
-        this.expandedSceneId = this.expandedSceneId === sceneId ? null : sceneId;
-    }
-
-    getTracksForScene(scene: any) {
-        if (!scene?.moodTags || scene.moodTags.length === 0) {
-            return [];
-        }
-
-        return this.tracks.filter(track =>
-            scene.moodTags.every((tag: string) =>
-                track.tags?.includes(tag)
-            )
-        ).sort((a, b) => {
-            const titleA = a.title?.toLowerCase() ?? '';
-            const titleB = b.title?.toLowerCase() ?? '';
-
-            return titleA.localeCompare(titleB);
-        });
     }
 }

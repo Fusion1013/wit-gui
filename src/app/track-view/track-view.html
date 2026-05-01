@@ -1,10 +1,12 @@
-<input
-  type="text"
-  placeholder="Search tracks..."
-  [(ngModel)]="searchTerm"
-  (input)="applyFilter()"
-/>
-<span>({{filteredTracks.length}})</span>
+<div class="search-field">
+  <input
+    type="text"
+    placeholder="Search tracks..."
+    [(ngModel)]="searchTerm"
+    (input)="applyFilter()"
+  />
+  <span>({{filteredTracks.length}})</span>
+</div>
 
 <table>
   <thead>

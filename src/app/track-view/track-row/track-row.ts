@@ -28,20 +28,20 @@ export class TrackRow {
         this.editingTrack = true;
 
         this.editBuffer = {
-        title: track.title ?? '',
-        artist: track.artist ?? '',
-        youtube: {
-            link: track.youtube?.link ?? '',
-            lengthMilliseconds: track.youtube?.lengthMilliseconds ?? 0
-        },
-        tags: [...(track.tags || [])]
+          title: track.title ?? '',
+          artist: track.artist ?? '',
+          youtube: {
+              link: track.youtube?.link ?? '',
+              lengthMilliseconds: track.youtube?.lengthMilliseconds ?? 0
+          },
+          tags: [...(track.tags || [])]
         };
 
         // clone so we don't mutate original until save
         this.editBuffer = {
-        ...track,
-        youtube: { ...track.youtube },
-        tags: [...(track.tags || [])]
+          ...track,
+          youtube: { ...track.youtube },
+          tags: [...(track.tags || [])]
         };
 
         this.titleInputField.nativeElement.focus();

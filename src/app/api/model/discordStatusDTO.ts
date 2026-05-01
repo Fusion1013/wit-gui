@@ -7,11 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { DiscordVoiceChannelDto } from './discordVoiceChannelDto';
+import { DiscordVoiceStatusDTO } from './discordVoiceStatusDTO';
 
 
 export interface DiscordStatusDTO { 
-    currentlyPlaying?: string;
-    joinedAudioChannel?: string;
-    joinedUsers?: Array<string>;
+    voiceStatus?: DiscordVoiceStatusDTO;
+    voiceChannels?: Array<DiscordVoiceChannelDto>;
 }
 

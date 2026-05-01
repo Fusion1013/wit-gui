@@ -1,0 +1,40 @@
+<div class="sidebar">
+    <div class="sidebar-content">
+        <h3>Now Playing</h3>
+        <div class="card" style="display: flex; flex-direction: column;">
+            <p><strong>{{ discordInfo.voiceStatus?.currentlyPlaying || 'Nothing playing' }}</strong></p>
+
+            <wit-progress-bar></wit-progress-bar>
+        </div>
+
+        <h3>Voice Channel</h3>
+        <div class="card">
+            <p>{{ discordInfo.voiceStatus?.joinedAudioChannel || 'Not connected' }}</p>
+        </div>
+
+        <h3>Users</h3>
+        <div class="card">
+            @if (discordInfo.voiceStatus?.joinedUsers?.length === 0) {
+                <p>No users</p>
+            } @else {
+                @for (user of discordInfo.voiceStatus?.joinedUsers; track $index) {
+                    <p>{{user}}</p>
+                }
+            }
+        </div>
+
+        <h3>Voice Channels</h3>
+        <div class="card" style="overflow: scroll;">
+            @for (guildGroup of groupedChannels; track $index) {
+                <p style="font-weight: bold;">{{guildGroup.guildName}}</p>
+                @for (channel of guildGroup.channels; track $index) {
+
+                    <div class="voice-channel-item">
+                        <p> - {{channel.name}}</p>
+                        <button (click)="joinVoiceChannel(channel)">Join</button>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
