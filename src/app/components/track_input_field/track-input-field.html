@@ -1,0 +1,7 @@
+<input [(ngModel)]="trackInput" (ngModelChange)="onChange()" [attr.list]="'track-options'" placeholder="Track Title" (click)="$event.stopPropagation()">
+
+<datalist id="track-options">
+    @for (track of tracks; track track.id) {
+        <option [value]="track.title"></option>
+    }
+</datalist>

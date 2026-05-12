@@ -8,12 +8,13 @@
  * Do not edit the class manually.
  */
 import { TrackEntity } from './trackEntity';
+import { TagEntity } from './tagEntity';
 
 
 export interface SceneEntity { 
     id?: number;
     title?: string;
     introTrack?: TrackEntity;
-    moodTags?: Array<string>;
+    tags?: Array<TagEntity>;
 }
 

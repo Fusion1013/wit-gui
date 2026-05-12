@@ -7,13 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TrackPropertyTypeEntity } from './trackPropertyTypeEntity';
 
 
-export interface DiscordVoiceChannelDto { 
-    guildId?: string;
-    guildName?: string;
-    channelId?: string;
-    name?: string;
-    userCount?: number;
+export interface TrackPropertyValueEntity { 
+    id?: number;
+    propertyType?: TrackPropertyTypeEntity;
+    value?: number;
 }
 

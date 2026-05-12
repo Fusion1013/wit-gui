@@ -1,0 +1,54 @@
+<tr class="campaign-row" (click)="toggleCampaignMoreInfo()">
+
+    <td>
+        @if (isEditingCampaign) {
+            <input (click)="preventPropagation($event)" #nameInput [(ngModel)]="editBuffer.name">
+        } @else {
+            {{ name }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingCampaign) {
+            <input
+              (click)="preventPropagation($event)"
+              [(ngModel)]="editBuffer.introTrackId"
+              [attr.list]="'track-options'"
+              placeholder="Intro Track Title"
+          >
+
+          <datalist id="track-options">
+              @for (track of tracks; track track.id) {
+                <option [value]="track.title"></option>
+              }
+          </datalist>
+        } @else {
+            {{ introTrackTitle || '-' }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingCampaign) {
+        <button (click)="saveEdit($event)">Save</button>
+        <button (click)="cancelEdit($event)">Cancel</button>
+        } @else {
+        <button (click)="startEdit($event)">Edit</button>
+        <button (click)="deleteCampaign($event)">Delete</button>
+        }
+    </td>
+
+</tr>
+
+@if (isExpanded) {
+<tr class="expanded-row">
+    <td colspan="4">
+
+        <div class="expanded-content">
+
+            <h4>Schedule</h4>
+
+        </div>
+
+    </td>
+</tr>
+}

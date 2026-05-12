@@ -31,7 +31,10 @@
 
                     <div class="voice-channel-item">
                         <p> - {{channel.name}}</p>
-                        <button (click)="joinVoiceChannel(channel)">Join</button>
+                        <div style="display: flex; flex-direction: row; align-items: center;">
+                            <p>({{channel.userCount}})</p>
+                            <button (click)="joinVoiceChannel(channel)">Join</button>
+                        </div>
                     </div>
                 }
             }

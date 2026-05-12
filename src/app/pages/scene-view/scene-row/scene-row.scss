@@ -1,0 +1,64 @@
+@use '../../../../styles/shared-table';
+
+:host {
+    display: contents;
+}
+
+.scene-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.scene-row:hover {
+  background-color: #f7fafc;
+}
+
+/* Expanded row */
+.expanded-row td {
+  background: #f9fafb;
+  padding: 0;
+}
+
+.expanded-content {
+  padding: 12px;
+  border-left: 3px solid #3182ce;
+}
+
+/* Track list */
+.track-item {
+  padding: 6px 0;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.track-item:last-child {
+  border-bottom: none;
+}
+
+.empty {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+.track-item-tag {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.track-item {
+  margin-left: 0px;
+  transition: margin 0.2s ease;
+}
+
+.track-item:hover {
+
+  margin-left: 10px;
+
+  .track-item-tag {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

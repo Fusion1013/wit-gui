@@ -1,0 +1,33 @@
+<div class="search-field">
+  <input type="text" placeholder="Search scenes..." [(ngModel)]="searchTerm" (input)="applyFilter()" />
+  <span class="tag">({{filteredTags.length}})</span>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Selection Method</th>
+            <th style="width: 250px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input [(ngModel)]="newTag.title" placeholder="Name">
+            </td>
+
+            <td>
+                <input [(ngModel)]="newTag.selectionMethod" placeholder="Selection Method">
+            </td>
+
+            <td>
+                <button class="button--secondary" (click)="addTag()">Add</button>
+            </td>
+        </tr>
+
+        @for (tag of filteredTags; track $index) {
+            <wit-tag-row (changeEvent)="loadTags()" [tag]="tag"></wit-tag-row>
+        }
+    </tbody>
+</table>

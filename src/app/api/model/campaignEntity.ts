@@ -7,13 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TrackEntity } from './trackEntity';
 
 
-export interface DiscordVoiceChannelDto { 
-    guildId?: string;
-    guildName?: string;
-    channelId?: string;
+export interface CampaignEntity { 
+    id?: number;
     name?: string;
-    userCount?: number;
+    introTrack?: TrackEntity;
 }
 

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectorRef, Component, inject, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { DiscordInfoControllerService, DiscordStatusDTO, DiscordVoiceChannelDto } from "../../api";
+import { DiscordInfoApiService, DiscordStatusDTO, DiscordVoiceChannelDto } from "../../api";
 import { interval, switchMap } from "rxjs";
 import { ProgressBar } from "../progress-bar/progress-bar";
 
@@ -19,7 +19,7 @@ type GuildGroup = {
 })
 export class Sidebar implements OnInit {
 
-    private readonly discordService = inject(DiscordInfoControllerService);
+    private readonly discordService = inject(DiscordInfoApiService);
     private cd = inject(ChangeDetectorRef);
 
     discordInfo: DiscordStatusDTO = {};

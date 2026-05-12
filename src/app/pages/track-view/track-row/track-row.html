@@ -1,0 +1,66 @@
+<tr>
+
+    <!-- TITLE -->
+    <td>
+        @if (editingTrack) {
+            <input #titleInput [(ngModel)]="editBuffer.title" (keyup.enter)="saveEdit()" />
+        } @else {
+            {{ title }}
+        }
+    </td>
+
+    <!-- ARTIST -->
+    <td>
+        @if (editingTrack) {
+            <input [(ngModel)]="editBuffer.artist" (keyup.enter)="saveEdit()" />
+        } @else {
+            {{ artist }}
+        }
+    </td>
+
+    <!-- YOUTUBE -->
+    <td>
+        @if (editingTrack) {
+            <input [(ngModel)]="editBuffer.youtube.link" (keyup.enter)="saveEdit()" />
+        } @else {
+            <a [href]="link" target="_blank">Link</a>
+        }
+    </td>
+
+    <!-- LENGTH -->
+    <td>
+        @if (editingTrack) {
+            <input type="number" [(ngModel)]="editBuffer.youtube.lengthMilliseconds" (keyup.enter)="saveEdit()" />
+        } @else {
+            {{ lengthMilliseconds }}ms
+        }
+    </td>
+
+    <!-- TAGS -->
+    <td>
+        @if (editingTrack) {
+            <wit-tag-multi-select (selectedTagsChange)="setTags($event)" [clear$]="clearInputValues$" [inputTags]="track()?.tags"></wit-tag-multi-select>
+        } @else {
+            @if (tags?.length === 0) {
+                <span>-</span>
+            } @else {
+                @for (tag of tags; track $index) {
+                    <span class="tag">{{tag.name}}</span>
+                }
+            }
+        }
+    </td>
+
+    <!-- ACTIONS -->
+    <td>
+        @if (editingTrack) {
+            <button (click)="saveEdit()">Save</button>
+            <button (click)="cancelEdit()">Cancel</button>
+        } @else {
+            <button (click)="startEdit(track())">Edit</button>
+            <button (click)="playTrack(track()?.id)">Play</button>
+            <button (click)="deleteTrack(track()?.id)">Delete</button>
+        }
+    </td>
+
+</tr>

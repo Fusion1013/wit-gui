@@ -1,0 +1,47 @@
+<div class="search-field">
+  <input
+    type="text"
+    placeholder="Search properties..."
+    [(ngModel)]="searchTerm"
+    (input)="applyFilter()"
+  />
+  <span>({{filteredProperties.length}})</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Lower Value Description</th>
+      <th>Upper Value Description</th>
+      <th style="width: 250px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input [(ngModel)]="newProperty.name" placeholder="Title" />
+      </td>
+
+      <td>
+        <input [(ngModel)]="newProperty.description" placeholder="Description" />
+      </td>
+        
+      <td>
+        <input [(ngModel)]="newProperty.lowerValueDescription" placeholder="Lower Value Description" />
+      </td>
+
+      <td>
+        <input [(ngModel)]="newProperty.upperValueDescription" placeholder="Upper Value Description" />
+      </td>
+
+      <td>
+        <button (click)="addProperty()">Add</button>
+      </td>
+    </tr>
+    @for (property of filteredProperties; track property.id) {
+        <wit-property-row [property]="property"></wit-property-row>
+    }
+  </tbody>
+</table>

@@ -7,6 +7,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TrackPropertyValueEntity } from './trackPropertyValueEntity';
+import { TagEntity } from './tagEntity';
 import { YoutubeTrackInfoEntity } from './youtubeTrackInfoEntity';
 
 
@@ -15,6 +17,7 @@ export interface TrackEntity {
     title?: string;
     artist?: string;
     youtube?: YoutubeTrackInfoEntity;
-    tags?: Array<string>;
+    tags?: Array<TagEntity>;
+    propertyValues?: Array<TrackPropertyValueEntity>;
 }
 

@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { ChangeDetectorRef, Component, inject, OnInit } from "@angular/core";
-import { DiscordInfoControllerService, DiscordStatusDTO } from "../../api";
+import { DiscordInfoApiService, DiscordStatusDTO } from "../../api";
 import { interval, switchMap } from "rxjs";
 
 @Component({
@@ -11,7 +11,7 @@ import { interval, switchMap } from "rxjs";
 })
 export class ProgressBar implements OnInit {
 
-    private readonly discordService = inject(DiscordInfoControllerService);
+    private readonly discordService = inject(DiscordInfoApiService);
     private readonly cd = inject(ChangeDetectorRef);
 
     discordInfo: DiscordStatusDTO = {};
@@ -57,6 +57,18 @@ export class ProgressBar implements OnInit {
         const seconds = totalSeconds % 60;
 
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    play() {
+
+    }
+
+    pause() {
+
+    }
+
+    stop() {
+        
     }
 
 }

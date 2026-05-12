@@ -7,13 +7,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CampaignEntity } from './campaignEntity';
 
 
-export interface DiscordVoiceChannelDto { 
-    guildId?: string;
-    guildName?: string;
-    channelId?: string;
-    name?: string;
-    userCount?: number;
+export interface ScheduledCampaignEntity { 
+    id?: number;
+    campaign?: CampaignEntity;
+    date?: string;
 }
 

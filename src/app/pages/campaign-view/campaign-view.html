@@ -1,0 +1,38 @@
+<div class="search-field">
+    <input type="text" placeholder="Search campaigns..." [(ngModel)]="searchTerm" (input)="applyFilter()" />
+    <span>({{filteredCampaigns.length}})</span>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Intro Track</th>
+            <th style="width: 250px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input [(ngModel)]="newCampaign.name" placeholder="Name" />
+            </td>
+
+            <td>
+                <input [(ngModel)]="introTrackInput" [attr.list]="'track-options'" placeholder="Intro Track Title">
+
+                <datalist id="track-options">
+                    @for (track of tracks; track track.id) {
+                    <option [value]="track.title"></option>
+                    }
+                </datalist>
+            </td>
+
+            <td>
+                <button (click)="addCampaign()">Add</button>
+            </td>
+        </tr>
+        @for (campaign of filteredCampaigns; track campaign.id) {
+            <wit-campaign-row (changeEvent)="loadCampaigns()" [campaign]="campaign"></wit-campaign-row>
+        }
+    </tbody>
+</table>

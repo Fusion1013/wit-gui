@@ -1,0 +1,37 @@
+<div class="search-field">
+  <input type="text" placeholder="Search scenes..." [(ngModel)]="searchTerm" (input)="applyFilter()" />
+  <span class="tag">({{filteredScenes.length}})</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Intro Track</th>
+      <th>Tags</th>
+      <th style="width: 250px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input [(ngModel)]="newScene.title" placeholder="Title" />
+      </td>
+
+      <td>
+        <wit-track-input-field [clear$]="clearInputValues$" (track)="setIntroTrack($event)"></wit-track-input-field>
+      </td>
+
+      <td>
+        <wit-tag-multi-select [inputTags]="newScene.moodTags" [clear$]="clearInputValues$" (selectedTagsChange)="setTags($event)"></wit-tag-multi-select>
+      </td>
+
+      <td>
+        <button (click)="addScene()">Add</button>
+      </td>
+    </tr>
+    @for (scene of filteredScenes; track scene.id) {
+    <wit-scene-row (changeEvent)="loadScenes()" [scene]="scene"></wit-scene-row>
+    }
+  </tbody>
+</table>

@@ -22,6 +22,18 @@
         (click)="setTab('campaigns')">
         Campaigns
       </button>
+
+      <button
+        [class.active]="activeTab === 'properties'"
+        (click)="setTab('properties')">
+        Properties
+      </button>
+
+      <button
+        [class.active]="activeTab === 'tags'"
+        (click)="setTab('tags')">
+        Tags
+      </button>
     </div>
 
     <!-- Tab content -->
@@ -37,6 +49,15 @@
       @if (activeTab === 'campaigns') {
         <wit-campaign-view />
       }
+
+      @if (activeTab === 'properties') {
+        <wit-property-view></wit-property-view>
+      }
+
+      @if (activeTab === 'tags') {
+        <wit-tag-view></wit-tag-view>
+      }
+
     </div>
 
   </div>

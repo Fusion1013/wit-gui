@@ -1,8 +1,16 @@
-<div class="progress-bar">
-  <div class="progress-fill" [style.width.%]="progress"></div>
-</div>
+<div class="player">
+  <div class="progress-bar">
+    <div class="progress-fill" [style.width.%]="progress"></div>
+  </div>
 
-<div class="time">
-  {{ formatTime(currentPosition) }} /
-  {{ formatTime(currentDuration) }}
+  <div class="time">
+    {{ formatTime(currentPosition) }} /
+    {{ formatTime(currentDuration) }}
+    
+    <div class="controls">
+      <button (click)="play()">▶</button>
+      <button (click)="pause()">⏸</button>
+      <button (click)="stop()">⏹</button>
+    </div>
+  </div>
 </div>

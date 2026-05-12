@@ -1,0 +1,43 @@
+<tr class="property-row">
+    <td>
+        @if (isEditingProperty) {
+            <input (click)="preventPropagation($event)">
+        } @else {
+            {{ name }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingProperty) {
+            <input (click)="preventPropagation($event)">
+        } @else {
+            {{ description }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingProperty) {
+            <input (click)="preventPropagation($event)">
+        } @else {
+            {{ lowerValueDescription }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingProperty) {
+            <input (click)="preventPropagation($event)">
+        } @else {
+            {{ upperValueDescription }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingProperty) {
+        <button (click)="saveEdit($event)">Save</button>
+        <button (click)="cancelEdit($event)">Cancel</button>
+        } @else {
+        <button (click)="startEdit($event)">Edit</button>
+        <button (click)="deleteProperty($event)">Delete</button>
+        }
+    </td>
+</tr>

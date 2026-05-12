@@ -9,11 +9,11 @@
  */
 
 
-export interface DiscordVoiceChannelDto { 
-    guildId?: string;
-    guildName?: string;
-    channelId?: string;
+export interface TrackPropertyTypeEntity { 
+    id?: number;
     name?: string;
-    userCount?: number;
+    description?: string;
+    upperValueDescription?: string;
+    lowerValueDescription?: string;
 }
 

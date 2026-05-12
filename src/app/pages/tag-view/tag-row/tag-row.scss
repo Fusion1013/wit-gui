@@ -1,0 +1,14 @@
+@use '../../../../styles/shared-table';
+
+:host {
+    display: contents;
+}
+
+.tag-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tag-row:hover {
+  background-color: #f7fafc;
+}

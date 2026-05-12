@@ -2,3 +2,52 @@
 body {
     margin: 0;
 }
+
+.tag {
+    display: inline-block;
+    background: #edf2f7;
+    padding: 2px 8px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+%button-base {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.button--primary {
+    @extend %button-base;
+    background-color: #3182ce;
+    color: white;
+}
+
+.button--primary:hover {
+    background-color: #2b6cb0;
+}
+
+.button--secondary {
+    @extend %button-base;
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+
+.button--secondary:hover {
+    background-color: #52ba2d;
+}
+
+.button--warning {
+    @extend %button-base;
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+
+.button--warning:hover {
+    background-color: #c42727;
+}

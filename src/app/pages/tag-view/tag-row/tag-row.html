@@ -1,0 +1,30 @@
+<tr class="tag-row">
+
+    <td>
+        @if (isEditingTag) {
+            <input [(ngModel)]="editBuffer.name">
+        } @else {
+            {{ tag()?.name }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingTag) {
+            <input [(ngModel)]="editBuffer.selectionMethod">
+        }
+        @else {
+            {{ tag()?.selectionMethod }}
+        }
+    </td>
+
+    <td>
+        @if (isEditingTag) {
+        <button class="button--primary" (click)="saveEdit($event)">Save</button>
+        <button class="button--warning" (click)="cancelEdit($event)">Cancel</button>
+        } @else {
+        <button class="button--primary" (click)="startEdit($event)">Edit</button>
+        <button class="button--warning" [hidden]="true" (click)="deleteTag($event)">Delete</button>
+        }
+    </td>
+
+</tr>

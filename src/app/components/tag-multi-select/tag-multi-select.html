@@ -1,0 +1,39 @@
+<div class="tag-select">
+
+  <!-- Selected tags -->
+  <div class="selected-tags">
+    @for (tag of selectedTags; track tag.id) {
+      <span class="tag">
+        {{ tag.name }}
+        <button (click)="removeTag(tag); $event.stopPropagation()">x</button>
+      </span>
+    }
+  </div>
+
+  <!-- Search -->
+  <input
+    #inputElement
+    type="text"
+    [(ngModel)]="search"
+    placeholder="Search tags..."
+    (focus)="open()"
+    (blur)="onBlur()"
+    (click)="$event.stopPropagation()"
+  />
+
+  @if (isOpen) {
+      <!-- Dropdown list -->
+    <div class="tag-list" [ngStyle]="dropdownStyle">
+        @for (tag of filteredTags; track tag.id) {
+        <div
+            class="tag-item"
+            [class.selected]="isSelected(tag)"
+            (click)="toggleTag(tag); $event.stopPropagation()"
+        >
+            {{ tag.name }}
+        </div>
+        }
+    </div>
+  }
+
+</div>

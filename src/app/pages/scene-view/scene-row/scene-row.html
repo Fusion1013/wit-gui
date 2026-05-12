@@ -1,0 +1,75 @@
+<tr class="scene-row" (click)="toggleSceneMoreInfo()">
+
+    <!-- TITLE -->
+    <td>
+        @if (isEditingScene) {
+            <input (click)="preventPropagation($event)" #titleInput [(ngModel)]="editBuffer.title" />
+        } @else {
+            {{ scene()?.title }}
+        }
+    </td>
+
+    <!-- INTRO TRACK-->
+    <td>
+        @if (isEditingScene) {
+            <wit-track-input-field [clear$]="clearInputValues$" (track)="editBuffer.introTrack = $event" [inputTrack]="scene()?.introTrack"></wit-track-input-field>
+        } @else {
+            {{ scene()?.introTrack?.title || '-' }}
+        }
+    </td>
+
+    <!-- TAGS -->
+    <td>
+        @if (isEditingScene) {
+            <wit-tag-multi-select (selectedTagsChange)="setTags($event)" [clear$]="clearInputValues$" [inputTags]="editBuffer.tags"></wit-tag-multi-select>
+        } @else {
+            @for (tag of tags; track $index) {
+                <span class="tag">{{tag.name}}</span>
+            }
+        }
+    </td>
+
+    <!-- ACTIONS -->
+    <td>
+        @if (isEditingScene) {
+        <button class="button--primary" (click)="saveEdit($event)">Save</button>
+        <button class="button--warning" (click)="cancelEdit($event)">Cancel</button>
+        } @else {
+        <button class="button--primary" (click)="startEdit($event)">Edit</button>
+        <button class="button--secondary" (click)="playScene(sceneId, $event)">Play</button>
+        <button class="button--warning" (click)="deleteScene(sceneId, $event)">Delete</button>
+        }
+    </td>
+
+</tr>
+
+@if (isExpanded) {
+<tr class="expanded-row">
+    <td colspan="4">
+
+        <div class="expanded-content">
+
+            <h4>Matching Tracks</h4>
+
+            @for (track of tracksForScene; track $index) {
+                <div class="track-item">
+                    <span class="tag">{{$index+1}}</span>
+                    <strong>{{ track.title }}</strong>
+                    <span class="tag">{{ track.artist }}</span>
+                    <div style="margin-left: 20px">
+                        @for (tag of track.tags; track $index) {
+                            <span class="track-item-tag tag">{{tag.name}}</span>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (tracksForScene.length === 0) {
+                <p class="empty">No matching tracks</p>
+            }
+
+        </div>
+
+    </td>
+</tr>
+}
